@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Password Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/short-unique-id@4.4.4/dist/short-unique-id.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./index.css">
+    <script src="./index.js"></script>
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="card">
+            <div class="titleContainer">
+                <h1 class="titleCard centeredText">Password Generator</h1>
+            </div>
+            <div class="container">
+                <div class="textAreaWrapper">
+                    <textarea class="form-control passwordTextArea" id="password" rows="1" readonly></textarea>
+                    <button class="btn btn-primary copyButton" data-clipboard-target="#password" id="copyBtn"
+                        onclick="copyPassword()">
+                        <em class="fa fa-copy"></em>
+                </div>
+                <div class="form-group">
+                    <div class="lengthContainer">
+                        <label for="length" class="centeredText lengthLabel">Password Length</label>
+                        <div class="valueAndSliderContainer">
+                            <textarea class="lengthValue" id="lengthValue" rows="1" readonly>10</textarea>
+                            <input type="range" class="form-range lengthSlider" id="length" min="6" max="30" value="10"
+                                oninput="sliderValueChange()">
+                        </div>
+                    </div>
+                    <div class="checkboxesContainer">
+                        <div class="form-check checkboxContainer">
+                            <input class="form-check-input checkboxValue" type="checkbox" value="" id="uppercase"
+                                checked>
+                            <label class="form-check-label checkboxLabel" for="uppercase">
+                                Uppercase
+                            </label>
+                        </div>
+                        <div class="form-check checkboxContainer">
+                            <input class="form-check-input checkboxValue" type="checkbox" value="" id="lowercase"
+                                checked>
+                            <label class="form-check-label checkboxLabel" for="lowercase">
+                                Lowercase
+                            </label>
+                        </div>
+                        <div class="form-check checkboxContainer">
+                            <input class="form-check-input checkboxValue" type="checkbox" value="" id="symbol" checked>
+                            <label class="form-check-label checkboxLabel" for="symbol">
+                                Symbols
+                            </label>
+                        </div>
+                        <div class="form-check checkboxContainer">
+                            <input class="form-check-input checkboxValue" type="checkbox" value="" id="numeric" checked>
+                            <label class="form-check-label checkboxLabel" for="numeric">
+                                Numbers
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="generateBtnContainer">
+                    <button type="button" class="btn btn-primary generateBtn"
+                        onclick="generatePassword()">Generate</button>
+                </div>
+                <span id="strengthDisp" class="badge displayBadge"></span>
+            </div>
+        </div>
+        <div id="copyToast">Copied to clipboard</div>
+    </div>
+</body>
+
+</html>
